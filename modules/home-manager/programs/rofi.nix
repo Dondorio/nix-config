@@ -1,14 +1,21 @@
-{pkgs, config, ...}: {
-  home.packages = [
-    pkgs.rofi-power-menu
+{
+  pkgs,
+  config,
+  ...
+}: {
+  home.packages = with pkgs; [
+    rofi-power-menu
+    rofi-network-manager
+    # oranchelo-icon-theme
   ];
 
   programs.rofi = {
     enable = true;
-    #package = pkgs.rofi;
+    package = pkgs.rofi-wayland;
+
     extraConfig = {
       modi = "run,drun,window";
-      icon-theme = "Oranchelo";
+      # icon-theme = "Oranchelo";
       show-icons = true;
       terminal = "kitty";
       drun-display-format = "{icon} {name}";
@@ -17,9 +24,10 @@
       hide-scrollbar = true;
       display-drun = "   Apps ";
       display-run = "   Run ";
-      display-window = " ⊞  Window ";
+      display-window = " ⊞ Window ";
       sidebar-mode = true;
     };
+
     theme = let
       inherit (config.lib.formats.rasi) mkLiteral;
     in {
@@ -34,6 +42,7 @@
 
       "window" = {
         height = mkLiteral "360px";
+        border-radius = mkLiteral "8px";
       };
 
       "inputbar" = {
@@ -60,7 +69,7 @@
 
       "listview" = {
         border = mkLiteral "0px 0px 0px";
-        padding = mkLiteral "6px 0px 0px";
+        padding = mkLiteral "6px 0px";
         margin = mkLiteral "10px 0px 0px 20px";
         colums = 2;
         lines = 5;

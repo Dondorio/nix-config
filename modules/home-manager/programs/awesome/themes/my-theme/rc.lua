@@ -10,6 +10,7 @@ require("awful.autofocus")
 local wibox = require("wibox")
 -- Theme handling library
 local beautiful = require("beautiful")
+local dpi = beautiful.xresources.apply_dpi
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
@@ -17,6 +18,7 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
+
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -66,8 +68,8 @@ modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-  awful.layout.suit.spiral,
   awful.layout.suit.tile,
+  awful.layout.suit.spiral,
   awful.layout.suit.floating,
   awful.layout.suit.tile.left,
   awful.layout.suit.tile.bottom,
@@ -101,10 +103,10 @@ mymainmenu = awful.menu({
   }
 })
 
-mylauncher = awful.widget.launcher({
-  image = beautiful.awesome_icon,
-  menu = mymainmenu
-})
+--mylauncher = awful.widget.launcher({
+--  image = beautiful.awesome_icon,
+--  menu = mymainmenu
+--})
 
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
@@ -204,16 +206,24 @@ awful.screen.connect_for_each_screen(function(s)
   }
 
   -- Create the wibox
-  s.mywibox = awful.wibar({ position = "top", screen = s })
+  s.mywibox = awful.wibar({
+    position = "top",
+    screen = s,
+    stretch = false,
+    height = 24,
+    -- margins = { top = 100 },
+    width = 1920 - 48,
+    -- margins = 100
+  })
 
   -- Add widgets to the wibox
   s.mywibox:setup {
     layout = wibox.layout.align.horizontal,
     { -- Left widgets
       layout = wibox.layout.fixed.horizontal,
-      mylauncher,
+      -- mylauncher,
       s.mytaglist,
-      s.mypromptbox,
+      -- s.mypromptbox,
     },
     s.mytasklist, -- Middle widget
     {             -- Right widgets
@@ -223,6 +233,10 @@ awful.screen.connect_for_each_screen(function(s)
       mytextclock,
       s.mylayoutbox,
     },
+
+    --shape = function(cr, width, height)
+    --  gears.shape.rounded_rect(cr, width, height)
+    --end,
   }
 end)
 -- }}}
@@ -559,3 +573,4 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 awful.spawn.with_shell("picom -b")
 -- awful.spawn.with_shell("nitrogen --restore")
 awful.spawn.with_shell("nm-applet")
+-- awful.spawn.single_instance("nvidia-settings")

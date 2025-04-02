@@ -2,10 +2,11 @@
   programs.nixvim.plugins.toggleterm = {
     enable = true;
     settings = {
-      direction = "float";
+      direction = "horizontal";
       float_opts = {
         border = "curved";
       };
+      shell = "zsh";
     };
   };
 }

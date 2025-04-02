@@ -1,34 +1,35 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, inputs, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+  pkgs,
+  inputs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
 
-      ../../modules/nixos/nvidia.nix
-      ../../modules/nixos/games.nix
-      ../../modules/nixos/music.nix
-      ../../modules/nixos/stylix.nix
-    ];
+    ../../modules/nixos/nvidia.nix
+    ../../modules/nixos
+  ];
 
   # Bootloader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda";
-  boot.loader.grub.useOSProber = true;
+  boot.loader.grub = {
+    enable = true;
+    device = "/dev/sda";
+    useOSProber = true;
+  };
 
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking = {
+    hostName = "donda"; # Define your hostname.
+    # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+    # Configure network proxy if necessary
+    # networking.proxy.default = "http://user:password@proxy:port/";
+    # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Enable networking
-  networking.networkmanager.enable = true;
+    # Enable networking
+    networkmanager.enable = true;
+    # wireless.enable = true;
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Warsaw";
@@ -48,58 +49,48 @@
     LC_TIME = "pl_PL.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  # You can disable this if you're only using the Wayland session.
-  services.xserver = {
-    enable = true;
-
+  services = {
     displayManager = {
-        sddm.enable = true;
-        # defaultSession = "none+awesome";
+      sddm.enable = true;
     };
 
-    windowManager.awesome = {
+    desktopManager = {
+      plasma6.enable = true;
+    };
+
+    # Configure keymap in X11
+    xserver.xkb = {
+      layout = "pl";
+      variant = "";
+    };
+
+    # Enable CUPS to print documents.
+    printing.enable = true;
+
+    pipewire = {
       enable = true;
-      luaModules = with pkgs.luaPackages; [
-        luarocks # is the package manager for Lua modules
-        luadbi-mysql # Database abstraction layer
-      ];
-
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      # If you want to use JACK applications, uncomment this
+      jack.enable = true;
     };
-  };
 
-  # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  #services.desktopManager.plasma6.enable = true;
+    gnome = {
+      gnome-keyring.enable = true;
+    };
 
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "pl";
-    variant = "";
+    gvfs.enable = true;
   };
 
   # Configure console keymap
   console.keyMap = "pl2";
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    jack.enable = true;
 
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
+  # use the example session manager (no others are packaged yet so this is enabled by default,
+  # no need to redefine it in your config for now)
+  #media-session.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -107,93 +98,61 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.donda = {
     isNormalUser = true;
-    description = "Emily";
-    extraGroups = [ "networkmanager" "wheel" ];
+    description = "Donda";
+    extraGroups = ["networkmanager" "wheel" "music" "realtime"];
+
     packages = with pkgs; [
       kdePackages.kate
-    #  thunderbird
+      kdePackages.gwenview
     ];
+
     shell = pkgs.zsh;
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = {inherit inputs;};
+
     users = {
       "donda" = import ./home.nix;
     };
+
+    backupFileExtension = "hm-backup";
   };
 
-  # Install firefox.
-  programs.firefox.enable = true;
+  programs = {
+    firefox.enable = true;
+    dconf.enable = true;
+    zsh.enable = true;
+
+    nh = {
+      enable = true;
+      clean = {
+        enable = true;
+        extraArgs = "--keep-since 4d --keep 3";
+      };
+      flake = "/home/donda/nix";
+    };
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfreePredicate = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
-    neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    #wget
-
     home-manager
-
-    vesktop
-    vencord
-    (discord.override {
-      withOpenASAR = true;
-      withVencord = true;
-    })
-    
-    
-    spotify
-    krita
-    krita-plugin-gmic
-    blockbench
-
-    wine
-    lutris
-
-    vscode
-    fastfetch
-    gparted
-    lf
-    kdePackages.partitionmanager
-    libtree
-
-    mpv
-    jetbrains.idea-community-src
-
-    gcc
-    gcc14
     git
-    gnumake
-    cmake
-    man
-    htop
-    libusb1
-    
-    #Hardware config tools
-    roccat-tools
-    piper
-    libratbag
-
-    #MADE BY MEE
-    #ALLL MEEE
-    #NO AUTUMN'S HELP INCLUDED
-    wget
-    networkmanagerapplet
-    # home-manager
-    hyprpaper
-    (pkgs.catppuccin-sddm.override {
-      flavor = "mocha";
-      font = "CaskaydiaCove Nerd Font";
-      fontSize = "12";
-    })
+    # polkit_gnome
+    gparted
+    base16-schemes
+    killall
+    fzf
+    nodejs_23
+    yarn
   ];
 
   fonts.packages = with pkgs; [
     noto-fonts
-    noto-fonts-cjk
+    #     noto-fonts-cjk-sans
     noto-fonts-emoji
     liberation_ttf
     fira-code
@@ -202,37 +161,55 @@
     dina-font
     proggyfonts
 
-    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "CascadiaCode" ]; })
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.ubuntu
+    # nerd-fonts.cascadiacode
+    nerd-fonts.fira-code
+    nerd-fonts.droid-sans-mono
   ];
 
-
   #Fcitx
-  i18n.inputMethod = {
+  #   i18n.inputMethod = {
+  #    enable = true;
+  #    type = "fcitx5";
+  #    fcitx5.addons = with pkgs; [
+  #        fcitx5-mozc
+  #        fcitx5-gtk
+  #    ];
+  #   };
+
+  xdg.portal = {
     enable = true;
-    type = "fcitx5";
-    fcitx5.addons = with pkgs; [
-        fcitx5-mozc
-        fcitx5-gtk
-    ];
+    xdgOpenUsePortal = true;
+    config = {
+      common.default = ["gtk"];
+    };
   };
 
+  # Networking stuff
+  networking = {
+    networkmanager.insertNameservers = ["1.1.1.1"];
+    nftables.enable = true;
+    firewall = {
+      enable = false;
+      allowedTCPPorts = [22 80 443];
+      allowedUDPPortRanges = [
+        {
+          from = 4000;
+          to = 4007;
+        }
+        {
+          from = 8000;
+          to = 8010;
+        }
+      ];
+      rejectPackets = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+      #allowPing = true;
+    };
+  };
 
-  programs.dconf.enable = true;
-  
-  programs.zsh.enable = true;
-
-  # programs.thunar.enable = true;
-
-
-  networking.networkmanager.insertNameservers = [ "8.8.8.8" ];
-
-  # services.clamav = {
-  #   daemon.enable = true;
-  #   updater.enable = true; 
-  # };
-
+  #networking.nftables.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -242,23 +219,14 @@
   #   enableSSHSupport = true;
   # };
 
-  # List services that you want to enable:
+  #   services.gvfs.enable = true;
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  security.polkit.enable = true;
 
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.05"; # Did you read the comment?
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
+  system.stateVersion = "24.11"; # Did you read the comment?
 }

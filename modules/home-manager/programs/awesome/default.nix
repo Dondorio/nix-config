@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }: 
+{
   imports = [
     ./themes/my-theme
   ];

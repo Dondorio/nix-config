@@ -21,49 +21,54 @@
       }
 
       {
-        mode = "n";
+        mode = ["n" "i" "v"];
         key = "<c-l>";
         action = "<cmd>BufferLineCycleNext<cr>";
       }
 
       {
-        mode = "n";
+        mode = ["n" "i" "v"];
         key = "<c-h>";
         action = "<cmd>BufferLineCyclePrev<cr>";
       } 
 
 
       {
-        mode = "n";
+        mode = ["n" "i" "v"];
         key = "<c-j>";
         action = "<cmd>BufferLineGoToBuffer 1<cr>";
       } 
 
 
       {
-        mode = "n";
+        mode = ["n" "i" "v"];
         key = "<c-k>";
         action = "<cmd>BufferLineGoToBuffer -1<cr>";
       } 
 
       {
         mode = "n";
-        key = "<c-s>";
-        action = "<cmd>w<cr>";
+        key = "<leader><leader>";
+        action = "<cmd>Yazi<cr>";
       }
 
       {
-        mode = "v";
-        key = "<cs-c>";
-        action = "\"+y";
+        mode = "n";
+        key = "<leader>a";
+        action = "<cmd>AerialToggle<cr>";
       }
 
       {
-        mode = ["n" "i" "v"];
-        key = "<cs-b>";
-        action = "<cmd>CccPick<cr>";
+        mode = "n";
+        key = "{";
+        action = "<cmd>AerialPrev<cr>";
       }
 
+      {
+        mode = "n";
+        key = "}";
+        action = "<cmd>AerialNext<cr>";
+      }
     ];
   };
 }

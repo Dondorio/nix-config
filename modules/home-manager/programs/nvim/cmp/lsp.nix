@@ -3,25 +3,19 @@
     lsp = {
       enable = true;
       servers = {
-        clangd.enable = true;
-        eslint.enable = true;
-        jsonls.enable = true;
-        lua-ls= {
+        asm_lsp.enable = true;
+        lua_ls = {
           enable = true;
           settings.telemetry.enable = false;
         };
-        nil-ls.enable = true;
         pyright.enable = true;
-        rust-analyzer = {
-          enable = true;
-          installCargo = true;
-          installRustc = true;
-        };
-        tsserver.enable = true;
+        nil_ls.enable = true;
+        clangd.enable = true;
+        eslint.enable = true;
+        html.enable = true;
+        jsonls.enable = true;
+        ts_ls.enable = true;
         zls.enable = true;
-      };
-      keymaps.lspBuf = {
-        gd = "definition";
       };
     };
     cmp-emoji = {enable = true;};
@@ -81,7 +75,7 @@
     cmp-cmdline = {enable = false;}; # autocomplete for cmdline
     luasnip = {
       enable = true;
-      extraConfig = {
+      settings = {
         enable_autosnippets = true;
         store_selection_keys = "<Tab>";
       };
