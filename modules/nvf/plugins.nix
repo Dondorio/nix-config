@@ -72,6 +72,9 @@
       toggleterm = {
         enable = true;
         lazygit.enable = true; # Git helper
+        setupOpts = {
+          direction = "vertical";
+        };
       };
     };
 

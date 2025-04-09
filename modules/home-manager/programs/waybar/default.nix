@@ -8,6 +8,7 @@
     mako
     libnotify
     pamixer
+    wlogout
   ];
 
   programs.waybar = {
@@ -15,15 +16,14 @@
 
     settings = {
       mainBar = {
-        height = 20;
+        # height = 20;
         # margin = "4rem";
         # spacing = ;
-        layer = "top";
+        # layer = "top";
 
         modules-left = [
           "custom/launcher"
           "mpris"
-          "custom/weather"
         ];
 
         modules-center = [
@@ -32,21 +32,21 @@
 
         modules-right = [
           "network"
-          "custom/wg"
+          # "custom/wg"
           "pulseaudio"
           "group/sysinfo"
-          "backlight"
+          # "backlight"
           "battery"
           "tray"
           # "hyprland/language"
           # "custom/wallpaper"
-          "idle_inhibitor"
-          "custom/refresh-rate"
+          # "idle_inhibitor"
+          # "custom/refresh-rate"
           "clock"
+          "group/syscontrol"
         ];
 
         "hyprland/workspaces" = {
-          # format = "{name}";
           format = " ";
           all-outputs = true;
           on-click = "activate";
@@ -67,11 +67,6 @@
           #   "9" = [];
           # };
         };
-
-        # "hyprland/language" = {
-        #   format = "{}";
-        #   format-en = "🇬🇧 ";
-        # };
 
         "tray" = {
           spacing = 10;
@@ -184,26 +179,20 @@
           format-icons = ["󱊡" "󱊢" "󱊣"];
         };
 
-        # "custom/weather" = {
-        #   format = "{}°C";
-        #   tooltip = true;
-        #   interval = 3600;
-        #   exec = "wttrbar --location Lodz";
-        #   return-type = "json";
-        # };
-
         "mpris" = {
-          format = "{player_icon} {title}";
-          format-paused = "{status_icon} {title}";
+          format = "{player_icon}{status_icon} {title}";
+          format-paused = "{player_icon}{status_icon} {title}";
           max-length = 80;
           player-icons = {
-            default = "";
-            spotify = " ";
+            default = "";
+            spotify = " ";
+            zen = "󰈹 ";
+            firefox = "󰈹 ";
           };
 
           status-icons = {
-            paused = "";
-            spotify = " ";
+            playing = "";
+            paused = "";
           };
 
           on-click = "playerctl play-pause";
@@ -226,15 +215,25 @@
           };
         };
 
+        "custom/wlogout" = {
+          format = "";
+          on-click = "wlogout";
+        };
+
+        "group/syscontrol" = {
+          orientation = "inherit";
+          # spacing = 0;
+          # margin = 0;
+          modules = [
+            "idle_inhibitor"
+            "custom/wlogout"
+          ];
+        };
+
         "custom/launcher" = {
           format = "Applications";
           on-click = "rofi -show drun";
         };
-
-        # "custom/wallpaper" = {
-        #   format = "󰸉 ";
-        #   on-click = "bash ~/.config/hypr/scripts/changewallpaper.sh";
-        # };
       };
     };
   };

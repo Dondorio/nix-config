@@ -6,7 +6,7 @@
       cursor_shape = "beam";
       term = "xterm-256color";
       shell_integration = "disabled";
-      open_url_with = "zen-browser";
+      open_url_with = "zen";
       cursor_blink_interval = 0;
       cursor_trail = "1"; # Enable fancy cursor animations
       # background_opacity = "0.5";

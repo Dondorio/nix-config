@@ -26,14 +26,14 @@
   fonts.fontconfig.enable = true;
 
   programs = {
-    git = {
-      enable = true;
-      userName = "Donda";
-      # userEmail = "";
-      extraConfig = {
-        init.defaultBranch = "main";
-      };
-    };
+    # git = {
+    #   enable = true;
+    #   userName = "Donda";
+    #   # userEmail = "";
+    #   extraConfig = {
+    #     init.defaultBranch = "main";
+    #   };
+    # };
 
     btop.enable = true;
 

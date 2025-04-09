@@ -7,13 +7,27 @@
     "${modulesPath}/installer/cd-dvd/installation-cd-minimal.nix"
   ];
 
-  nixpkgs.hostPlatform = "x86_64-linux";
+  nixpkgs = {
+    hostPlatform = "x86_64-linux";
+    config.allowUnfree = true;
+    config.allowUnfreePredicate = true;
+  };
 
   environment.systemPackages = with pkgs; [
     gparted
     git
     killall
     kitty
+    rustc
+    rust-analyzer
+    rustfmt
+    clang
+    clang-tools
+    gcc
+    cmake
+    man
+    btop
+    cargo
   ];
 
   fonts.packages = with pkgs; [
@@ -29,6 +43,7 @@
   };
 
   services = {
+    displayManager.sddm.enable = true;
     desktopManager.plasma6.enable = true;
 
     pipewire = {

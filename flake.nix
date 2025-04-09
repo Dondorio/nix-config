@@ -5,6 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     #nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
     nixpkgs-cad7255.url = "github:nixos/nixpkgs/cad72553776976da6754e035490f032e6dbf7012";
+    # nixpkgs-nvf.url = "github:nixos/nixpkgs/25d1b84f5c90632a623c48d83a2faf156451e6b1";
 
     #Home manager
     home-manager = {
@@ -42,11 +43,6 @@
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # hyprpanel = {
-    #   url = "github:Jas-SinghFSU/HyprPanel";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
 
     # nixgl = {
     #   url = "github:nix-community/nixGL";

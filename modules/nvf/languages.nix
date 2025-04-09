@@ -19,8 +19,8 @@
       clang = {
         enable = true;
         cHeader = true;
-        lsp.enable = true;
-        treesitter.enable = true;
+        # lsp.enable = true;
+        # treesitter.enable = true;
       };
 
       python.enable = true;
@@ -52,9 +52,11 @@
     lsp = {
       formatOnSave = true;
       lightbulb.enable = true; # Shows a lightbulb signifying a code action being available
+      null-ls.enable = true;
       # lsplines.enable = true; # Render diagnostics using virtual lines
       lspSignature.enable = true; # Show function signature as you type
       nvim-docs-view.enable = true;
+      # otter-nvim.enable = true;
     };
   };
 }

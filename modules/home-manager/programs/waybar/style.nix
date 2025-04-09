@@ -21,22 +21,32 @@ in {
         /* border-radius: 3rem; */
         /* margin: 1rem; */
         /* padding: 0px 2rem; */
-        color: #d4d4d4;
+        color: #${b16.base06};
         transition-property: background-color;
         transition-duration: 0.5s;
       }
 
-      /* button:hover { */
-      /*   background-color: #FFFFFF; */
-      /* } */
+      button:hover {
+        background-color: #FFFFFF;
+      }
 
+      #syscontrol,
       #sysinfo,
+      /* #backlight, */
+      /* #battery, */
+      /* #clock, */
+      /* #mpris */
+      /* #custom-launcher, */
+      /* #network, */
+      /* #pulseaudio, */
+      /* #tray, */
+      /* #workspaces, */
       .module {
         border-radius: 1rem;
         background-color: #${b16.base00};
-        color: #${b16.base06};
+        /* color: #${b16.base06}; */
         /* font-size: 1rem; */
-        padding: 0.2rem 1rem;
+        padding: 0.15rem 0.4rem;
         margin: 0.25rem 0.25rem;
         /* min-width: 2rem; */
       }
@@ -60,11 +70,16 @@ in {
       #workspaces button {
         color: #${b16.base0B};
         background-color: #${b16.base0B};
-        border-radius: 8px;
+        border-radius: 0.5rem;
         /* box-shadow: inset 0 -3px transparent; */
-        padding: 3px 4px;
+        /* padding: 3px 4px */
         transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.68);
         min-width: 1rem;
+        font-size: 0.5rem;
+        /* height: 0.5rem; */
+
+        margin: 0px 0.1rem;
+        /* max-height: 0.5rem; */
       }
 
       #workspaces button.active {
@@ -88,14 +103,14 @@ in {
       /* } */
 
       tooltip {
-        border-radius: 15px;
-        padding: 15px;
+        border-radius: 1rem;
+        padding: 1rem;
         background-color: #${b16.base00};
       }
 
       tooltip label {
-        padding: 5px;
-        font-size: 14px;
+        padding: 0.5rem;
+        font-size: 1rem;
         }
 
     '';

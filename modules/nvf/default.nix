@@ -20,5 +20,16 @@
       whichKey.enable = true;
       cheatsheet.enable = true;
     };
+
+    options = {
+      tabstop = 2;
+      shiftwidth = 2;
+    };
+
+    # vim.diagnostic.config({virtual_lines = true})
+    luaConfigPre = ''
+      vim.diagnostic.config({ virtual_lines = { current_line = true } })
+      vim.lsp.inlay_hint.enable(true)
+    '';
   };
 }

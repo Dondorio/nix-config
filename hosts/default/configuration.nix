@@ -148,6 +148,8 @@
     fzf
     nodejs_23
     yarn
+    clang
+    gh
   ];
 
   fonts.packages = with pkgs; [

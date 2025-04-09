@@ -6,22 +6,23 @@
   home.packages = with pkgs; [
     #alsa-oss
     anki
-    # appimage-run
+    #appimage-run
     #atlauncher
     baobab
-    # blockbench
+    #blockbench
     #brave
+    cargo
     #chromium
     discord
     #discordo
     fastfetch
-    # flameshot
+    #flameshot
     floorp
     fuse
     #heroic
     jetbrains.idea-community-src
     kdePackages.kdenlive
-    #     kitty
+    #kitty
     lf
     libtree
     #lunar-client
@@ -33,12 +34,16 @@
     playerctl
     #popsicle
     #quickemu
+    rust-analyzer
+    rustc
+    rustfmt
+    rustlings
     ungit
     #ungoogled-chromium
     vdhcoapp
-    # vencord
+    #vencord
     vesktop
-    # webcord-vencord
+    #webcord-vencord
     #wine
 
     gcc
@@ -49,6 +54,4 @@
 
     inputs.zen-browser.packages."${system}".default
   ];
-
-  stylix.targets.kde.enable = false;
 }
