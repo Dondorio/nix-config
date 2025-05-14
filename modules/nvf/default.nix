@@ -27,9 +27,13 @@
     };
 
     # vim.diagnostic.config({virtual_lines = true})
-    luaConfigPre = ''
-      vim.diagnostic.config({ virtual_lines = { current_line = true } })
-      vim.lsp.inlay_hint.enable(true)
-    '';
+    luaConfigPre =
+      /*
+      lua
+      */
+      ''
+        vim.diagnostic.config({ virtual_lines = { current_line = true } })
+        vim.lsp.inlay_hint.enable(true)
+      '';
   };
 }

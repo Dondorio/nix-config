@@ -1,7 +1,11 @@
 {
   config.vim = {
+    lsp = {
+      enable = true;
+      lspkind.enable = true;
+    };
+
     languages = {
-      enableLSP = true;
       enableTreesitter = true;
       enableExtraDiagnostics = true;
       enableFormat = true;
@@ -19,8 +23,6 @@
       clang = {
         enable = true;
         cHeader = true;
-        # lsp.enable = true;
-        # treesitter.enable = true;
       };
 
       python.enable = true;

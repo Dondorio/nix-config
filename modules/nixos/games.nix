@@ -2,6 +2,11 @@
   environment.systemPackages = with pkgs; [
     mangohud
     protonup
+    protontricks
+
+    lunar-client
+    badlion-client
+    prismlauncher
   ];
 
   # ENV var for custom proton versions

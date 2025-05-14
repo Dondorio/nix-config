@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  lib,
   ...
 }: {
   imports = [
@@ -10,6 +11,8 @@
     ../../modules/nixos/nvidia.nix
     ../../modules/nixos
   ];
+
+  boot.kernelModules = ["coretemp"];
 
   # Bootloader.
   boot.loader.grub = {
@@ -50,6 +53,11 @@
   };
 
   services = {
+    xserver = {
+      enable = true;
+      desktopManager.gnome.enable = true;
+    };
+
     displayManager = {
       sddm.enable = true;
     };
@@ -63,6 +71,8 @@
       layout = "pl";
       variant = "";
     };
+    # Enable the OpenSSH daemon.
+    openssh.enable = true;
 
     # Enable CUPS to print documents.
     printing.enable = true;
@@ -86,24 +96,24 @@
   # Configure console keymap
   console.keyMap = "pl2";
 
-  security.rtkit.enable = true;
+  security = {
+    rtkit.enable = true;
+    polkit.enable = true;
+  };
 
   # use the example session manager (no others are packaged yet so this is enabled by default,
   # no need to redefine it in your config for now)
   #media-session.enable = true;
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.donda = {
     isNormalUser = true;
     description = "Donda";
-    extraGroups = ["networkmanager" "wheel" "music" "realtime"];
+    extraGroups = ["networkmanager" "wheel" "music" "realtime" "docker"];
 
     packages = with pkgs; [
       kdePackages.kate
       kdePackages.gwenview
+      lm_sensors
     ];
 
     shell = pkgs.zsh;
@@ -132,6 +142,16 @@
       };
       flake = "/home/donda/nix";
     };
+
+    appimage = {
+      enable = true;
+      binfmt = true;
+      package = pkgs.appimage-run.override {
+        extraPkgs = pkgs: [pkgs.xorg.libxshmfence];
+      };
+    };
+
+    ssh.askPassword = lib.mkForce "${pkgs.plasma5Packages.ksshaskpass.out}/bin/ksshaskpass";
   };
 
   # Allow unfree packages
@@ -139,17 +159,29 @@
   nixpkgs.config.allowUnfreePredicate = true;
 
   environment.systemPackages = with pkgs; [
-    home-manager
-    git
+    # node
+    # nodejs_23
     # polkit_gnome
-    gparted
+    # wine
     base16-schemes
-    killall
-    fzf
-    nodejs_23
-    yarn
+    cargo-cross
     clang
+    fzf
     gh
+    git
+    glib
+    glib-networking
+    gnumake
+    gparted
+    gtk3
+    home-manager
+    killall
+    ninja
+    rustup
+    webkitgtk_4_1
+    wine64
+    winetricks
+    yarn
   ];
 
   fonts.packages = with pkgs; [
@@ -211,6 +243,29 @@
     };
   };
 
+  virtualisation = {
+    containers.enable = true;
+
+    podman = {
+      enable = true;
+
+      # Create a `docker` alias for podman, to use it as a drop-in replacement
+      dockerCompat = true;
+
+      # Required for containers under podman-compose to be able to talk to each other.
+      defaultNetwork.settings.dns_enabled = true;
+    };
+
+    docker = {
+      enable = false;
+      # enableOnBoot = true;
+      # rootless = {
+      #   enable = true;
+      #   setSocketVariable = true;
+      # };
+    };
+  };
+
   #networking.nftables.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -220,13 +275,6 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-
-  #   services.gvfs.enable = true;
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-
-  security.polkit.enable = true;
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 

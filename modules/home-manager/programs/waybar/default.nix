@@ -80,7 +80,7 @@
 
         "cpu" = {
           interval = 30;
-          format = "CPU: {}%";
+          format = "CPU: {usage}%";
           max-length = 10;
         };
 

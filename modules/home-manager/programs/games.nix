@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    lunar-client
+    # lunar-client
     lutris
     prismlauncher
   ];

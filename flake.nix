@@ -20,7 +20,6 @@
 
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
-      # inputs.nixpkgs.follows = "nixpkgs-cad7255";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -43,11 +42,6 @@
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # nixgl = {
-    #   url = "github:nix-community/nixGL";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
   };
 
   outputs = {

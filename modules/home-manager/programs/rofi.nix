@@ -6,7 +6,6 @@
   home.packages = with pkgs; [
     rofi-power-menu
     rofi-network-manager
-    # oranchelo-icon-theme
   ];
 
   programs.rofi = {
@@ -17,7 +16,7 @@
       modi = "run,drun,window";
       # icon-theme = "Oranchelo";
       show-icons = true;
-      terminal = "kitty";
+      terminal = "\${pkgs.kitty}/bin/kitty";
       drun-display-format = "{icon} {name}";
       location = 0;
       disable-history = false;

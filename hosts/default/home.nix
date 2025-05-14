@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ../../modules/home-manager
   ];
@@ -18,9 +14,11 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  home.packages = [
-    (pkgs.writeShellScriptBin "my-hello" ''
-        echo "Hello, ${config.home.username}!" '')
+  home.packages = with pkgs; [
+    # (pkgs.writeShellScriptBin "my-hello" ''
+    #     echo "Hello, ${config.home.username}!" '')
+    capitaine-cursors
+    papirus-icon-theme
   ];
 
   fonts.fontconfig.enable = true;
@@ -48,6 +46,13 @@
     MENU = "rofi";
   };
 
+  gtk = {
+    enable = true;
+    cursorTheme.name = "capitaine-cursors";
+    iconTheme.name = "papirus-icon-theme-pink-folders";
+    # theme.name = "";
+  };
+
   #define default apps for mime type
   xdg.mime.enable = true;
 
@@ -66,6 +71,12 @@
       "x-scheme-handler/https" = ["zen.desktop"];
       "x-scheme-handler/about" = ["zen.desktop"];
       "x-scheme-handler/unknown" = ["zen.desktop"];
+      # "x-scheme-handler/chrome" = ["zen.desktop"];
+
+      "application/x-extension-htm" = ["zen.desktop"];
+      "application/x-extension-html" = ["zen.desktop"];
+      "application/x-extension-xht" = ["zen.desktop"];
+      "application/x-extension-xhtml" = ["zen.desktop"];
     };
   };
 }

@@ -1,20 +1,21 @@
 {
   programs.kitty = {
     enable = true;
+
+    shellIntegration = {
+      enableZshIntegration = true;
+    };
+
     settings = {
       confirm_os_window_close = 0;
       cursor_shape = "beam";
-      term = "xterm-256color";
+      # term = "xterm-kitty";
       shell_integration = "disabled";
-      open_url_with = "zen";
+      # open_url_with = "zen.desktop";
       cursor_blink_interval = 0;
       cursor_trail = "1"; # Enable fancy cursor animations
-      # background_opacity = "0.5";
-      # background_blur = "40";
-
-      # foreground = "#dbd7dd";
-      # background = "#0d0613";
     };
+
     keybindings = {
       "ctrl+shift+n" = "";
       "ctrl+shift+b" = "";

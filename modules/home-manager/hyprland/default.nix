@@ -1,10 +1,14 @@
 {
   pkgs,
   lib,
+  config,
   ...
-}: {
+}: let
+  b16 = config.lib.stylix.colors;
+in {
   imports = [
     ../programs/waybar
+    ../programs/mako.nix
   ];
 
   home.packages = with pkgs; [
@@ -21,14 +25,22 @@
   wayland.windowManager.hyprland = {
     enable = true;
     package = null;
+    portalPackage = null;
     systemd.variables = ["--all"];
 
     settings = {
       exec-once = [
         "waybar"
         "hyprpaper"
+        "nm-applet"
         "systemctl --user start plasma-polkit-agent" # Enable polkit for hyprland
+        "systemctl --user import-environment PATH && systemctl --user restart xdg-desktop-portal.service"
       ];
+
+      general = {
+        border_size = 2;
+        layout = "master";
+      };
 
       decoration = {
         rounding = 8;
@@ -42,7 +54,8 @@
           enabled = true;
           range = 4;
           render_power = 3;
-          color = lib.mkDefault "rgba(1a1a1aee)";
+          # color = lib.mkDefault "rgba(1a1a1aee)";
+          color = lib.mkDefault "rgba(${b16.base03}ee)";
         };
 
         # https://wiki.hyprland.org/Configuring/Variables/#blur
@@ -72,25 +85,27 @@
           ", Print, exec, hyprshot -zm region"
           "SHIFT, Print, exec, hyprshot -zm output"
 
-          "$mod ALT SHIFT, Q, exit"
+          # "$mod ALT SHIFT, Q, exit"
+          "$mod ALT SHIFT, Q, exec, wlogout"
           "$mod, Q, killactive"
           "$mod, F, fullscreen"
           "$mod SHIFT, F, pseudo"
+          "$mod, SPACE, togglefloating"
 
           "$mod, H, movefocus, l"
           "$mod, J, movefocus, d"
           "$mod, K, movefocus, u"
           "$mod, L, movefocus, r"
 
-          "$mod SHIFT, H, movefocus, l"
-          "$mod SHIFT, J, movefocus, d"
-          "$mod SHIFT, K, movefocus, u"
-          "$mod SHIFT, L, movefocus, r"
+          "$mod SHIFT, H, movewindow, l"
+          "$mod SHIFT, J, movewindow, d"
+          "$mod SHIFT, K, movewindow, u"
+          "$mod SHIFT, L, movewindow, r"
 
-          "$mod CTRL, H, movefocus, l"
-          "$mod CTRL, J, movefocus, d"
-          "$mod CTRL, K, movefocus, u"
-          "$mod CTRL, L, movefocus, r"
+          "$mod CTRL, H, resizeactive, l"
+          "$mod CTRL, J, resizeactive, d"
+          "$mod CTRL, K, resizeactive, u"
+          "$mod CTRL, L, resizeactive, r"
 
           "ALT, Tab, cyclenext"
         ]

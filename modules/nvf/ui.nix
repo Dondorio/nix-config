@@ -1,7 +1,10 @@
 {
   config.vim = {
     ui = {
-      borders.enable = true;
+      borders = {
+        enable = true;
+        # globalStyle = "rounded";
+      };
 
       noice = {
         enable = true; # Completely replaces the UI for messages, cmdline and the popupmenu.
@@ -14,8 +17,15 @@
         };
       };
 
-      colorizer.enable = true; # Colour highlighter
-      modes-nvim.enable = true; # Prismatic line decorations for the adventurous vim user
+      colorizer = {
+        enable = true; # Colour highlighter
+        setupOpts.user_default_options = {
+          tailwind = true;
+          virtualtext = "";
+        };
+      };
+
+      # modes-nvim.enable = true; # Prismatic line decorations for the adventurous vim user
       illuminate.enable = true; # Highlight the word under the cursor
 
       breadcrumbs = {
@@ -34,17 +44,18 @@
           go = ["90" "130"];
         };
       };
+
       fastaction.enable = true; # Plugin designed to optimize code actions
     };
 
     visuals = {
-      nvim-scrollbar.enable = false; # Scrollbar
+      # nvim-scrollbar.enable = false; # Scrollbar
       nvim-web-devicons.enable = true; # Provides nerdfont icons for use by nvim plugins
       nvim-cursorline.enable = true; # Highlight words and lines on the cursor
-      cinnamon-nvim.enable = true; # Smooth scrolling
+      # cinnamon-nvim.enable = true; # Smooth scrolling
       fidget-nvim.enable = true; # Extensible UI for Neovim notifications and LSP progress messages
-
       highlight-undo.enable = true;
+
       indent-blankline = {
         enable = true; # This plugin adds indentation guides to Neovim
         setupOpts = {

@@ -7,11 +7,15 @@
     #./anime-games-launcher.nix
     #./awesome
     ./art.nix
+    ./eza.nix
     ./games.nix
+    ./ghostty.nix
     ./kitty.nix
     ./music.nix
     ./rofi.nix
     ./spicetify.nix
+    ./zellij.nix
+    ./zoxide.nix
     ./zsh.nix
   ];
 
@@ -21,12 +25,15 @@
     #appimage-run
     baobab
     cargo
+    cargo-generate
+    cargo-modules
     chromium
     discord
     discordo
     fastfetch
     floorp
     fuse
+    helix
     jetbrains.idea-community-src
     kdePackages.kdenlive
     lf
@@ -42,16 +49,19 @@
     rustc
     rustfmt
     rustlings
+    svelte-language-server
     # ungit
     vdhcoapp
     vesktop
-    wine
 
+    python3
     gcc
     git
     cmake
     man
     htop
+
+    zulu17
 
     inputs.zen-browser.packages."${system}".default
   ];
