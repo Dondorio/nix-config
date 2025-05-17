@@ -1,6 +1,54 @@
 {
   description = "A very cool flake";
 
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    ...
+  } @ inputs: let
+    pkgs = import nixpkgs {
+      system = "x86_64-linux";
+    };
+
+    customNeovim = inputs.nvf.lib.neovimConfiguration {
+      inherit pkgs;
+      modules = [./modules/nvf];
+    };
+  in {
+    nixosConfigurations = {
+      donda = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs customNeovim;};
+        modules = [
+          ./hosts/default/configuration.nix
+          inputs.home-manager.nixosModules.home-manager
+          ({pkgs, ...}: {
+            environment.systemPackages = [self.packages.${pkgs.stdenv.system}.nvf];
+          })
+        ];
+      };
+
+      customISO = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs customNeovim;};
+        modules = [
+          ./hosts/customISO/configuration.nix
+          {environment.systemPackages = [customNeovim.neovim];}
+        ];
+      };
+    };
+
+    packages.x86_64-linux = {
+      nvf =
+        (inputs.nvf.lib.neovimConfiguration {
+          inherit pkgs;
+          modules = [
+            ./modules/nvf
+          ];
+        })
+        .neovim;
+    };
+  };
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     #nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
@@ -41,40 +89,6 @@
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-  };
-
-  outputs = {
-    nixpkgs,
-    home-manager,
-    ...
-  } @ inputs: let
-    pkgs = import nixpkgs {
-      system = "x86_64-linux";
-    };
-
-    customNeovim = inputs.nvf.lib.neovimConfiguration {
-      inherit pkgs;
-      modules = [./modules/nvf];
-    };
-  in {
-    nixosConfigurations = {
-      donda = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs customNeovim;};
-        modules = [
-          ./hosts/default/configuration.nix
-          inputs.home-manager.nixosModules.home-manager
-          {environment.systemPackages = [customNeovim.neovim];}
-        ];
-      };
-
-      customISO = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs customNeovim;};
-        modules = [
-          ./hosts/customISO/configuration.nix
-          {environment.systemPackages = [customNeovim.neovim];}
-        ];
-      };
     };
   };
 }
