@@ -26,7 +26,8 @@
         setupOpts = {
           options = {
             numbers = "none";
-            seperator_style = "slope";
+            separator_style = "slant";
+            sort_by = "id";
 
             # Null or one of “slant”, “padded_slant”, “slope”, “padded_slope”,
             # “thick”, “thin” or list of string

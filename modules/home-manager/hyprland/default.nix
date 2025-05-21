@@ -8,7 +8,8 @@
 in {
   imports = [
     ../programs/waybar
-    ../programs/mako.nix
+    ../services/mako.nix
+    ../services/swayosd.nix
   ];
 
   home.packages = with pkgs; [
@@ -43,7 +44,7 @@ in {
       };
 
       decoration = {
-        rounding = 8;
+        rounding = 6;
         rounding_power = 2;
 
         # Change transparency of focused and unfocused windows
@@ -124,14 +125,23 @@ in {
         );
 
       binde = [
-        ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
-        ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        ", XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise"
+        ", XF86AudioLowerVolume, exec, swayosd-client --output-volume lower"
+        ", XF86AudioMute, exec, swayosd-client --output-volume mute-toggle"
         # Requires playerctl
-        ", XF86AudioPlay, exec, playerctl play-pause"
-        ", XF86AudioPrev, exec, playerctl previous"
-        ", XF86AudioNext, exec, playerctl next"
+        ", XF86AudioPlay, exec, swayosd-client --playerctl=play-pause"
+        ", XF86AudioPrev, exec, swayosd-client --playerctl=previous"
+        ", XF86AudioNext, exec, swayosd-client --playerctl=next"
       ];
+      # binde = [
+      #   ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+      #   ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+      #   ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+      #   # Requires playerctl
+      #   ", XF86AudioPlay, exec, playerctl play-pause"
+      #   ", XF86AudioPrev, exec, playerctl previous"
+      #   ", XF86AudioNext, exec, playerctl next"
+      # ];
     };
   };
 }

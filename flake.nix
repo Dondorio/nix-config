@@ -10,15 +10,14 @@
     pkgs = import nixpkgs {
       system = "x86_64-linux";
     };
-
-    customNeovim = inputs.nvf.lib.neovimConfiguration {
-      inherit pkgs;
-      modules = [./modules/nvf];
-    };
+    # customNeovim = inputs.nvf.lib.neovimConfiguration {
+    #   inherit pkgs;
+    #   modules = [./modules/nvf];
+    # };
   in {
     nixosConfigurations = {
       donda = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs customNeovim;};
+        specialArgs = {inherit inputs;};
         modules = [
           ./hosts/default/configuration.nix
           inputs.home-manager.nixosModules.home-manager
@@ -29,10 +28,9 @@
       };
 
       customISO = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs customNeovim;};
+        specialArgs = {inherit inputs;};
         modules = [
           ./hosts/customISO/configuration.nix
-          {environment.systemPackages = [customNeovim.neovim];}
         ];
       };
     };

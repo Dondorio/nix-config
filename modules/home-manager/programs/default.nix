@@ -20,37 +20,32 @@
   ];
 
   home.packages = with pkgs; [
-    #alsa-oss
     anki
-    #appimage-run
     baobab
     cargo
     cargo-generate
     cargo-modules
     chromium
+    clippy
     discord
     discordo
     fastfetch
-    floorp
+    # floorp
     fuse
     helix
     jetbrains.idea-community-src
     kdePackages.kdenlive
     lf
     libtree
-    lutris
     mpv
     nautilus
-    # oranchelo-icon-theme
     playerctl
     # popsicle
-    # quickemu
     rust-analyzer
     rustc
     rustfmt
     rustlings
     svelte-language-server
-    # ungit
     vdhcoapp
     vesktop
 

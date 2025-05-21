@@ -3,7 +3,15 @@
     enable = true;
     enableZshIntegration = true;
 
-    # config = {
-    # }
+    settings = {
+      pane_fames = false;
+      show_startup_tips = false;
+
+      ui = {
+        pane_frames = {
+          rounded_corners = true;
+        };
+      };
+    };
   };
 }
