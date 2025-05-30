@@ -51,8 +51,8 @@
           all-outputs = true;
           on-click = "activate";
           format-icons = {
-            active = "󱎴";
-            default = "󰍹";
+            active = "";
+            default = "";
           };
 
           # persistent-workspaces = {
@@ -80,7 +80,7 @@
 
         "cpu" = {
           interval = 30;
-          format = "CPU: {usage}%";
+          format = " {usage}%";
           max-length = 10;
         };
 
@@ -97,8 +97,7 @@
 
         "memory" = {
           interval = 30;
-          # format = "RAM: {}%";
-          format = "RAM: {used:0.1f}GB";
+          format = " {used:0.1f}GB";
           max-length = 10;
         };
 
@@ -230,10 +229,10 @@
           ];
         };
 
-        "custom/launcher" = {
-          format = "Applications";
-          on-click = "rofi -show drun";
-        };
+        # "custom/launcher" = {
+        #   format = "Applications";
+        #   on-click = "rofi -show drun";
+        # };
       };
     };
   };

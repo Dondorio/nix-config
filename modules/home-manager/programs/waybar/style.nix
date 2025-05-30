@@ -8,7 +8,7 @@ in {
     ''
       * {
         font-family: JetBrains Mono, JetBrainsMono Nerd Font, Material Design Icons;
-        font-size: 14px;
+        font-size: 12px;
         border: none;
         border-radius: 0;
         min-height: 0;
@@ -17,6 +17,7 @@ in {
       window#waybar {
         /* background-color: rgba(26, 27, 318, 0.5); */
         background-color: #${b16.base00};
+        font-size: 12px;
         /* opacity: 0.5; */
         /* border-radius: 3rem; */
         /* margin: 1rem; */
@@ -30,18 +31,18 @@ in {
         background-color: #FFFFFF;
       }
 
+      #backlight,
+      #battery,
+      #clock,
+      #custom-wlogout,
+      #mpris,
+      #network,
+      #pulseaudio,
       #syscontrol,
       #sysinfo,
-      /* #backlight, */
-      /* #battery, */
-      /* #clock, */
-      /* #mpris */
-      /* #custom-launcher, */
-      /* #network, */
-      /* #pulseaudio, */
-      /* #tray, */
-      /* #workspaces, */
-      .module {
+      #tray,
+      #workspaces
+      {
         border-radius: 1rem;
         background-color: #${b16.base00};
         /* color: #${b16.base06}; */

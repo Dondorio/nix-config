@@ -20,27 +20,42 @@
   ];
 
   home.packages = with pkgs; [
+    # floorp
+    # helix
+    # popsicle
     anki
+    bacon
     baobab
+    bat
     cargo
     cargo-generate
+    cargo-info
     cargo-modules
     chromium
     clippy
+    cmake
     discord
     discordo
+    evil-helix
     fastfetch
-    # floorp
+    fd
     fuse
-    helix
+    gcc
+    git
+    gitui
+    htop
     jetbrains.idea-community-src
     kdePackages.kdenlive
     lf
     libtree
+    man
     mpv
     nautilus
+    ncspot
     playerctl
-    # popsicle
+    python3
+    ripgrep
+    ripgrep-all
     rust-analyzer
     rustc
     rustfmt
@@ -48,14 +63,6 @@
     svelte-language-server
     vdhcoapp
     vesktop
-
-    python3
-    gcc
-    git
-    cmake
-    man
-    htop
-
     zulu17
 
     inputs.zen-browser.packages."${system}".default

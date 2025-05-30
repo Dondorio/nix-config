@@ -15,7 +15,7 @@
   users.users.donda = {
     isNormalUser = true;
     description = "Donda";
-    extraGroups = ["networkmanager" "wheel" "music" "realtime" "docker"];
+    extraGroups = ["networkmanager" "wheel" "music" "realtime" "docker" "jackaudio" "audio"];
 
     packages = with pkgs; [
       kdePackages.kate

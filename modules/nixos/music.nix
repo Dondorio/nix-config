@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  inputs = [
+  imports = [
     inputs.musnix.nixosModules.musnix
   ];
 
@@ -12,9 +12,14 @@
     vital
     surge
     surge-XT
+    carla
+    alsa-tools
+    pavucontrol
   ];
 
   musnix = {
     enable = true;
+    alsaSeq.enable = true;
+    ffado.enable = true;
   };
 }
