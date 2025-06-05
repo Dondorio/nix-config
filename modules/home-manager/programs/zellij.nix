@@ -4,7 +4,7 @@
     enableZshIntegration = true;
 
     settings = {
-      pane_fames = false;
+      pane_frames = false;
       show_startup_tips = false;
 
       ui = {

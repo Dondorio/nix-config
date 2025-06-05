@@ -5,15 +5,12 @@
     self,
     nixpkgs,
     home-manager,
+    the quick
     ...
   } @ inputs: let
     pkgs = import nixpkgs {
       system = "x86_64-linux";
     };
-    # customNeovim = inputs.nvf.lib.neovimConfiguration {
-    #   inherit pkgs;
-    #   modules = [./modules/nvf];
-    # };
   in {
     nixosConfigurations = {
       donda = nixpkgs.lib.nixosSystem {
@@ -21,8 +18,11 @@
         modules = [
           ./hosts/default/configuration.nix
           inputs.home-manager.nixosModules.home-manager
+          inputs.nixcats.nixosModules.default
           ({pkgs, ...}: {
-            environment.systemPackages = [self.packages.${pkgs.stdenv.system}.nvf];
+            environment.systemPackages = [
+              self.packages.${pkgs.stdenv.system}.nvf
+            ];
           })
         ];
       };
@@ -86,6 +86,11 @@
 
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixcats = {
+      url = "path:./modules/nixcats";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

@@ -60,23 +60,23 @@
     enable = true;
     defaultApplications = {
       "text/plain" = ["kate.desktop"];
-      "application/pdf" = ["zen.desktop"];
-      "image/*" = ["gwenview.desktop"];
+      "application/pdf" = ["zen-beta.desktop"];
+      "image/*" = ["org.kde.gwenview.desktop"];
       "video/*" = ["mpv.desktop"];
       "application/aseprite" = ["aseprite.desktop"];
 
-      "default-web-browser" = ["zen.desktop"];
-      "text/html" = ["zen.desktop"];
-      "x-scheme-handler/http" = ["zen.desktop"];
-      "x-scheme-handler/https" = ["zen.desktop"];
-      "x-scheme-handler/about" = ["zen.desktop"];
-      "x-scheme-handler/unknown" = ["zen.desktop"];
-      # "x-scheme-handler/chrome" = ["zen.desktop"];
+      "default-web-browser" = ["zen-beta.desktop"];
+      "text/html" = ["zen-beta.desktop"];
+      "x-scheme-handler/http" = ["zen-beta.desktop"];
+      "x-scheme-handler/https" = ["zen-beta.desktop"];
+      "x-scheme-handler/about" = ["zen-beta.desktop"];
+      "x-scheme-handler/unknown" = ["zen-beta.desktop"];
+      # "x-scheme-handler/chrome" = ["zen-beta.desktop"];
 
-      "application/x-extension-htm" = ["zen.desktop"];
-      "application/x-extension-html" = ["zen.desktop"];
-      "application/x-extension-xht" = ["zen.desktop"];
-      "application/x-extension-xhtml" = ["zen.desktop"];
+      "application/x-extension-htm" = ["zen-beta.desktop"];
+      "application/x-extension-html" = ["zen-beta.desktop"];
+      "application/x-extension-xht" = ["zen-beta.desktop"];
+      "application/x-extension-xhtml" = ["zen-beta.desktop"];
     };
   };
 }
