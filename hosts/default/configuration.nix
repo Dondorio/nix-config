@@ -118,6 +118,7 @@
     dina-font
     proggyfonts
 
+    victor-mono
     nerd-fonts.jetbrains-mono
     nerd-fonts.ubuntu
     # nerd-fonts.cascadiacode

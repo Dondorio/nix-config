@@ -5,7 +5,6 @@
     self,
     nixpkgs,
     home-manager,
-    the quick
     ...
   } @ inputs: let
     pkgs = import nixpkgs {
@@ -18,11 +17,19 @@
         modules = [
           ./hosts/default/configuration.nix
           inputs.home-manager.nixosModules.home-manager
-          inputs.nixcats.nixosModules.default
-          ({pkgs, ...}: {
-            environment.systemPackages = [
-              self.packages.${pkgs.stdenv.system}.nvf
+          ({
+            pkgs,
+            inputs,
+            ...
+          }: {
+            imports = [
+              inputs.nixcats.nixosModules.default
             ];
+
+            nixCats.enable = true;
+            #   environment.systemPackages = [
+            #     self.packages.${pkgs.stdenv.system}.nvf
+            #   ];
           })
         ];
       };

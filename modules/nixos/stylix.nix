@@ -27,6 +27,28 @@
     #   size = 16;
     # };
 
+    fonts = {
+      serif = {
+        package = pkgs.dejavu_fonts;
+        name = "DejaVu Serif";
+      };
+
+      sansSerif = {
+        package = pkgs.dejavu_fonts;
+        name = "DejaVu Sans";
+      };
+
+      monospace = {
+        package = pkgs.victor-mono;
+        name = "Victor Mono";
+      };
+
+      emoji = {
+        package = pkgs.nerd-fonts.jetbrains-mono;
+        name = "JetBrains Mono";
+      };
+    };
+
     opacity = {
       terminal = 0.9;
       desktop = 0.9;
