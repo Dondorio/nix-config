@@ -14,6 +14,7 @@
     ./music.nix
     ./rofi.nix
     ./spicetify.nix
+    ./starship.nix
     ./zellij.nix
     ./zoxide.nix
     ./zsh.nix
