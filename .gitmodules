@@ -1,0 +1,3 @@
+[submodule "modules/nixcats"]
+	path = modules/nixcats
+	url = https://github.com/Dondorio/nixcats-config.git
