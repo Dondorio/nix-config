@@ -419,14 +419,18 @@
         ]
       },
       "locked": {
-        "path": "./modules/nixcats",
-        "type": "path"
+        "lastModified": 1749943609,
+        "narHash": "sha256-3oxi+bfRgRbHcznpsl1J5AQrFCn4//HpajnCBsafeug=",
+        "ref": "refs/heads/main",
+        "rev": "e9953793834a2ea48158aabc7b922df26b9e7177",
+        "revCount": 5,
+        "type": "git",
+        "url": "file:modules/nixcats"
       },
       "original": {
-        "path": "./modules/nixcats",
-        "type": "path"
-      },
-      "parent": []
+        "type": "git",
+        "url": "file:modules/nixcats"
+      }
     },
     "nixpkgs": {
       "locked": {

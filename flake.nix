@@ -97,7 +97,7 @@
     };
 
     nixcats = {
-      url = "path:./modules/nixcats";
+      url = "git+file:modules/nixcats";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
