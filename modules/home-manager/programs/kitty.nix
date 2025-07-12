@@ -19,6 +19,11 @@
     keybindings = {
       "ctrl+shift+n" = "";
       "ctrl+shift+b" = "";
+
+      "ctrl+0" = "change_font_size all 0";
+      "ctrl+minus" = "change_font_size all -1.0";
+      "ctrl+equal" = "change_font_size all +1.0";
+      "ctrl+plus" = "change_font_size all +1.0";
     };
   };
 }

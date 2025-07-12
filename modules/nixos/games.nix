@@ -6,7 +6,6 @@
 
     lunar-client
     badlion-client
-    prismlauncher
   ];
 
   # ENV var for custom proton versions

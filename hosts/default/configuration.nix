@@ -29,6 +29,9 @@
   home-manager = {
     extraSpecialArgs = {inherit inputs;};
 
+    useUserPackages = true;
+    useGlobalPkgs = true;
+
     users = {
       "donda" = import ./home.nix;
     };
@@ -87,6 +90,7 @@
     # polkit_gnome
     # wine
     base16-schemes
+    cargo
     cargo-cross
     clang
     fzf
@@ -95,6 +99,7 @@
     glib
     glib-networking
     gnumake
+    go
     gparted
     gtk3
     home-manager

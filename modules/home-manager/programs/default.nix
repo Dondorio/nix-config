@@ -24,11 +24,11 @@
     # floorp
     # helix
     # popsicle
+    alsa-oss
     anki
     bacon
     baobab
     bat
-    cargo
     cargo-generate
     cargo-info
     cargo-modules

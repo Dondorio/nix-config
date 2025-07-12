@@ -12,7 +12,7 @@
     vital
     surge
     surge-XT
-    carla
+    # carla
     alsa-tools
     pavucontrol
   ];
