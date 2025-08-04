@@ -3,9 +3,6 @@
     mangohud
     protonup
     protontricks
-
-    lunar-client
-    badlion-client
   ];
 
   # ENV var for custom proton versions

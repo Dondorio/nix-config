@@ -33,7 +33,7 @@
         modules-right = [
           "network"
           # "custom/wg"
-          "pulseaudio"
+          # "pulseaudio"
           "group/sysinfo"
           # "backlight"
           "battery"

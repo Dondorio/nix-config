@@ -45,7 +45,7 @@
     git
     gitui
     htop
-    jetbrains.idea-community-src
+    # jetbrains.idea-community-src
     kdePackages.kdenlive
     lf
     libtree
@@ -64,7 +64,7 @@
     svelte-language-server
     vdhcoapp
     vesktop
-    zulu17
+    # zulu17
 
     inputs.zen-browser.packages."${system}".default
   ];
