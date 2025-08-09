@@ -8,12 +8,11 @@
 
     settings = {
       confirm_os_window_close = 0;
-      cursor_shape = "beam";
-      # term = "xterm-kitty";
-      shell_integration = "disabled";
-      # open_url_with = "zen.desktop";
       cursor_blink_interval = 0;
+      cursor_shape = "beam";
       cursor_trail = "1"; # Enable fancy cursor animations
+      font_size = 11;
+      shell_integration = "disabled";
     };
 
     keybindings = {
