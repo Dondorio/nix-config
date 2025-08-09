@@ -3,6 +3,8 @@
     sddm-sugar-dark
   ];
 
+  hardware.pulseaudio.enable = true;
+
   services = {
     # xserver = {
     #   enable = true;
@@ -30,7 +32,7 @@
     printing.enable = true;
 
     pipewire = {
-      enable = true;
+      enable = false;
       # package = pkgs.pulseaudioFull;
       alsa.enable = true;
       alsa.support32Bit = true;

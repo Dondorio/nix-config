@@ -21,6 +21,7 @@
   ];
 
   home.packages = with pkgs; [
+    alacritty
     # floorp
     # helix
     # popsicle

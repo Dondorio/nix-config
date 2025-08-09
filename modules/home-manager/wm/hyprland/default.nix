@@ -7,9 +7,9 @@
   b16 = config.lib.stylix.colors;
 in {
   imports = [
-    ../programs/waybar
-    ../services/mako.nix
-    ../services/swayosd.nix
+    ../../programs/waybar
+    ../../services/mako.nix
+    ../../services/swayosd.nix
   ];
 
   home.packages = with pkgs; [

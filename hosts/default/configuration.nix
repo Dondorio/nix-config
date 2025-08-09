@@ -45,7 +45,7 @@
       enable = true;
       device = "/dev/sda";
       useOSProber = true;
-      theme = lib.mkForce pkgs.sleek-grub-theme;
+      theme = lib.mkForce pkgs.catppuccin-grub;
     };
   };
 
