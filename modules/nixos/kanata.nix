@@ -92,9 +92,9 @@
 
             (deflayer space-fn
             grv  S-1  S-2  S-3  S-4  S-5  S-6  S-7  S-8  S-9  S-0  _    +    bspc
-            tab  -    -    -    -    -    S-,  S-.  -    -    -    -    -    -
+            tab  -    -    -    -    -    -    S-.  -    S-,  -    -    -    -
             caps S-9  S-0  S-[  S-]  S-6  left down up   rght =    \    ret
-            lsft [    ]    -    -    grv  S-=  S-'  '    S-7  S-\  rsft
+            lsft S-1  S-8  [    ]    grv  S-=  S-'  '    S-7  S-\  rsft
             lctl lmet lalt           spc            ralt rmet rctl
             )
 
