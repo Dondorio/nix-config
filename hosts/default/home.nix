@@ -3,8 +3,6 @@
     ../../modules/home-manager
   ];
 
-  #   backupFileExtension = "backup";
-
   home = {
     username = "donda";
     homeDirectory = "/home/donda";
@@ -12,25 +10,7 @@
     stateVersion = "24.05";
   };
 
-  home.packages = with pkgs; [
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #     echo "Hello, ${config.home.username}!" '')
-    capitaine-cursors
-    papirus-icon-theme
-  ];
-
-  fonts.fontconfig.enable = true;
-
   programs = {
-    # git = {
-    #   enable = true;
-    #   userName = "Donda";
-    #   # userEmail = "";
-    #   extraConfig = {
-    #     init.defaultBranch = "main";
-    #   };
-    # };
-
     btop.enable = true;
 
     home-manager.enable = true;
@@ -46,9 +26,10 @@
 
   gtk = {
     enable = true;
-    cursorTheme.name = "capitaine-cursors";
-    iconTheme.name = "papirus-icon-theme-pink-folders";
-    # theme.name = "";
+    iconTheme = {
+      package = pkgs.papirus-icon-theme;
+      name = "Papirus-Dark";
+    };
   };
 
   #define default apps for mime type
