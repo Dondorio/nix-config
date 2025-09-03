@@ -93,6 +93,8 @@
     cargo
     cargo-cross
     clang
+    elixir
+    erlang
     fzf
     gh
     git
