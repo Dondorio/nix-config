@@ -39,9 +39,17 @@
     enable = true;
     defaultApplications = {
       "text/plain" = ["kate.desktop"];
+
       "application/pdf" = ["zen-beta.desktop"];
-      "image/*" = ["org.kde.gwenview.desktop"];
+
+      "image/png" = ["org.kde.gwenview.desktop"];
+      "image/jpeg" = ["org.kde.gwenview.desktop"];
+      "image/gif" = ["org.kde.gwenview.desktop"];
+
       "video/*" = ["mpv.desktop"];
+
+      "application/zip" = ["org.kde.ark.desktop"];
+
       "application/aseprite" = ["aseprite.desktop"];
 
       "default-web-browser" = ["zen-beta.desktop"];
