@@ -49,5 +49,7 @@
     };
 
     gvfs.enable = true;
+
+    tumbler.enable = true; # Thumbnail support for thunar
   };
 }

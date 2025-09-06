@@ -4,9 +4,20 @@
   ...
 }: {
   programs = {
-    firefox.enable = true;
     dconf.enable = true;
+    firefox.enable = true;
+    xfconf.enable = true;
     zsh.enable = true;
+
+    thunar = {
+      enable = true;
+      plugins = with pkgs.xfce; [
+        thunar-archive-plugin
+        thunar-media-tags-plugin
+        thunar-vcs-plugin
+        thunar-volman
+      ];
+    };
 
     nh = {
       enable = true;
@@ -25,6 +36,6 @@
       };
     };
 
-    ssh.askPassword = lib.mkForce "${pkgs.plasma5Packages.ksshaskpass.out}/bin/ksshaskpass";
+    ssh.askPassword = lib.mkForce "${pkgs.kdePackages.ksshaskpass.out}/bin/ksshaskpass";
   };
 }
