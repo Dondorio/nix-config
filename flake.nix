@@ -1,31 +1,30 @@
 {
   description = "A very cool flake";
 
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    ...
-  } @ inputs: let
-    pkgs = import nixpkgs {
-      system = "x86_64-linux";
-    };
+  outputs = {nixpkgs, ...} @ inputs: let
+    forAllSystems = nixpkgs.lib.genAttrs [
+      "aarch64-linux"
+      "i686-linux"
+      "x86_64-linux"
+      "aarch64-darwin"
+      "x86_64-darwin"
+    ];
   in {
+    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
+
     nixosConfigurations = {
       donda = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         modules = [
           ./hosts/default/configuration.nix
           inputs.home-manager.nixosModules.home-manager
+
           ({inputs, ...}: {
             imports = [
               inputs.nixcats.nixosModules.default
             ];
 
             nixCats.enable = true;
-            #   environment.systemPackages = [
-            #     self.packages.${pkgs.stdenv.system}.nvf
-            #   ];
           })
         ];
       };
@@ -36,17 +35,6 @@
           ./hosts/customISO/configuration.nix
         ];
       };
-    };
-
-    packages.x86_64-linux = {
-      nvf =
-        (inputs.nvf.lib.neovimConfiguration {
-          inherit pkgs;
-          modules = [
-            ./modules/nvf
-          ];
-        })
-        .neovim;
     };
   };
 
@@ -76,11 +64,6 @@
 
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    spicetify-nix = {
-      url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

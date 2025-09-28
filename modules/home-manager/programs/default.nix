@@ -4,8 +4,6 @@
   ...
 }: {
   imports = [
-    #./anime-games-launcher.nix
-    #./awesome
     ./art.nix
     ./eza.nix
     ./games.nix
@@ -13,7 +11,6 @@
     ./kitty.nix
     ./music.nix
     ./rofi.nix
-    ./spicetify.nix
     ./starship.nix
     ./zellij.nix
     ./zoxide.nix
@@ -21,10 +18,8 @@
   ];
 
   home.packages = with pkgs; [
-    alacritty
-    # floorp
-    # helix
     # popsicle
+    alacritty
     alsa-oss
     anki
     bacon
@@ -37,35 +32,29 @@
     clippy
     cmake
     discord
-    discordo
-    evil-helix
     fastfetch
     fd
     fuse
     gcc
     git
     gitui
+    helix
     htop
-    # jetbrains.idea-community-src
     kdePackages.kdenlive
     lf
     libtree
     man
     mpv
     nautilus
-    ncspot
     playerctl
     python3
     ripgrep
     ripgrep-all
-    rust-analyzer
     rustc
     rustfmt
     rustlings
-    svelte-language-server
     vdhcoapp
     vesktop
-    # zulu17
 
     inputs.zen-browser.packages."${system}".default
   ];

@@ -107,7 +107,6 @@
     home-manager
     killall
     ninja
-    rustup
     webkitgtk_4_1
     wine64
     winetricks
