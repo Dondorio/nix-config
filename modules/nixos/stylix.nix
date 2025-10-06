@@ -9,10 +9,7 @@
 
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
-    # base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
-    # terracotta-dark
-    # rose-pine-moon
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
 
     cursor = {
       package = pkgs.capitaine-cursors;
@@ -43,7 +40,7 @@
     };
 
     opacity = {
-      terminal = 0.9;
+      terminal = 1.0;
       desktop = 0.9;
     };
 

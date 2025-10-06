@@ -38,6 +38,7 @@
     gcc
     git
     gitui
+    gleam
     helix
     htop
     kdePackages.kdenlive
