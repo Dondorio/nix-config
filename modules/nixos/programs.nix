@@ -6,6 +6,7 @@
   programs = {
     dconf.enable = true;
     firefox.enable = true;
+    kdeconnect.enable = true;
     xfconf.enable = true;
     zsh.enable = true;
 
@@ -32,7 +33,11 @@
       enable = true;
       binfmt = true;
       package = pkgs.appimage-run.override {
-        extraPkgs = pkgs: [pkgs.xorg.libxshmfence];
+        extraPkgs = pkgs:
+          with pkgs; [
+            icu
+            xorg.libxshmfence
+          ];
       };
     };
 

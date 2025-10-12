@@ -47,6 +47,7 @@
     man
     mpv
     nautilus
+    nodejs
     playerctl
     python3
     ripgrep

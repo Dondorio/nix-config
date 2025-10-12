@@ -10,8 +10,8 @@
   environment.systemPackages = with pkgs; [
     helm
     vital
-    surge
-    surge-XT
+    # surge
+    # surge-XT
     # carla
     alsa-tools
     pavucontrol

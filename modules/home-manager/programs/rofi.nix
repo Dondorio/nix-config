@@ -10,13 +10,12 @@
 
   programs.rofi = {
     enable = true;
-    package = pkgs.rofi-wayland;
 
     extraConfig = {
       modi = "run,drun,window";
       # icon-theme = "Oranchelo";
       show-icons = true;
-      terminal = "\${pkgs.kitty}/bin/kitty";
+      terminal = "${pkgs.kitty}/bin/kitty";
       drun-display-format = "{icon} {name}";
       location = 0;
       disable-history = false;
