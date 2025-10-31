@@ -115,21 +115,16 @@
 
   fonts.packages = with pkgs; [
     noto-fonts
-    #     noto-fonts-cjk-sans
     noto-fonts-emoji
-    liberation_ttf
-    fira-code
-    fira-code-symbols
-    mplus-outline-fonts.githubRelease
-    dina-font
     proggyfonts
 
-    victor-mono
+    annotation-mono
+    iosevka
+    nerd-fonts._0xproto
+    nerd-fonts.fira-code
     nerd-fonts.jetbrains-mono
     nerd-fonts.ubuntu
-    # nerd-fonts.cascadiacode
-    nerd-fonts.fira-code
-    nerd-fonts.droid-sans-mono
+    victor-mono
   ];
 
   xdg.portal = {

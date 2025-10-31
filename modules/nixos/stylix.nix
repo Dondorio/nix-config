@@ -19,18 +19,18 @@
 
     fonts = {
       serif = {
-        package = pkgs.dejavu_fonts;
-        name = "DejaVu Serif";
+        package = pkgs.noto-fonts;
+        name = "Noto Serrif";
       };
 
       sansSerif = {
-        package = pkgs.dejavu_fonts;
-        name = "DejaVu Sans";
+        package = pkgs.noto-fonts;
+        name = "Noto Serrif";
       };
 
       monospace = {
-        package = pkgs.victor-mono;
-        name = "Victor Mono";
+        package = pkgs.annotation-mono;
+        name = "Annotation Mono";
       };
 
       emoji = {
