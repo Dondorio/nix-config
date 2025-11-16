@@ -32,6 +32,7 @@
     clippy
     cmake
     discord
+    dune_3
     fastfetch
     fd
     fuse
@@ -48,6 +49,8 @@
     mpv
     nautilus
     nodejs
+    ocaml
+    opam
     playerctl
     python3
     ripgrep
