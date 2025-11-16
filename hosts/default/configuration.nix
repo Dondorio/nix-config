@@ -5,10 +5,7 @@
   ...
 }: {
   imports = [
-    # Include the results of the hardware scan.
     ./hardware-configuration.nix
-
-    ../../modules/nixos/nvidia.nix
     ../../modules/nixos
   ];
 
@@ -16,12 +13,6 @@
     isNormalUser = true;
     description = "Donda";
     extraGroups = ["networkmanager" "wheel" "music" "realtime" "docker" "jackaudio" "audio"];
-
-    packages = with pkgs; [
-      kdePackages.kate
-      kdePackages.gwenview
-      lm_sensors
-    ];
 
     shell = pkgs.zsh;
   };
@@ -39,19 +30,35 @@
     backupFileExtension = "hm-backup";
   };
 
-  # Bootloader.
-  boot = {
-    loader.grub = {
-      enable = true;
-      device = "/dev/sda";
-      useOSProber = true;
-      theme = lib.mkForce pkgs.catppuccin-grub;
-    };
-  };
+  environment.systemPackages = with pkgs; [
+    home-manager
 
-  # Set your time zone.
+    fzf
+    gh
+    git
+    gparted
+    killall
+    man
+    wine64
+    winetricks
+  ];
+
+  fonts.packages = with pkgs; [
+    noto-fonts
+    noto-fonts-color-emoji
+
+    annotation-mono
+    iosevka
+    nerd-fonts._0xproto
+    nerd-fonts.fira-code
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.ubuntu
+    victor-mono
+  ];
+
   time.timeZone = "Europe/Warsaw";
 
+  console.keyMap = "pl2";
   i18n = {
     defaultLocale = "en_GB.UTF-8";
 
@@ -77,64 +84,6 @@
     };
   };
 
-  console.keyMap = "pl2";
-
-  security = {
-    rtkit.enable = true;
-    polkit.enable = true;
-  };
-
-  environment.systemPackages = with pkgs; [
-    # node
-    # nodejs_23
-    # polkit_gnome
-    # wine
-    base16-schemes
-    cargo
-    cargo-cross
-    clang
-    elixir
-    erlang
-    fzf
-    gh
-    git
-    glib
-    glib-networking
-    gnumake
-    go
-    gparted
-    gtk3
-    home-manager
-    killall
-    ninja
-    webkitgtk_4_1
-    wine64
-    winetricks
-    yarn
-  ];
-
-  fonts.packages = with pkgs; [
-    noto-fonts
-    noto-fonts-color-emoji
-    proggyfonts
-
-    annotation-mono
-    iosevka
-    nerd-fonts._0xproto
-    nerd-fonts.fira-code
-    nerd-fonts.jetbrains-mono
-    nerd-fonts.ubuntu
-    victor-mono
-  ];
-
-  xdg.portal = {
-    enable = true;
-    xdgOpenUsePortal = true;
-    config = {
-      common.default = ["gtk"];
-    };
-  };
-
   networking = {
     hostName = "donda";
 
@@ -144,21 +93,6 @@
     };
 
     nftables.enable = true;
-    firewall = {
-      enable = false;
-      allowedTCPPorts = [22 80 443];
-      allowedUDPPortRanges = [
-        {
-          from = 4000;
-          to = 4007;
-        }
-        {
-          from = 8000;
-          to = 8010;
-        }
-      ];
-      rejectPackets = true;
-    };
   };
 
   virtualisation = {
@@ -168,6 +102,28 @@
       enable = true;
       dockerCompat = true;
       defaultNetwork.settings.dns_enabled = true;
+    };
+  };
+
+  security = {
+    rtkit.enable = true;
+    polkit.enable = true;
+  };
+
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+    config = {
+      common.default = ["gtk"];
+    };
+  };
+
+  boot = {
+    loader.grub = {
+      enable = true;
+      device = "/dev/sda";
+      useOSProber = true;
+      theme = lib.mkForce pkgs.catppuccin-grub;
     };
   };
 

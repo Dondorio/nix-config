@@ -40,8 +40,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    #nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
-    nixpkgs-cad7255.url = "github:nixos/nixpkgs/cad72553776976da6754e035490f032e6dbf7012";
 
     home-manager = {
       url = "github:nix-community/home-manager";

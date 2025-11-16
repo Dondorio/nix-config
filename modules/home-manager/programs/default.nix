@@ -1,6 +1,6 @@
 {
-  pkgs,
   inputs,
+  pkgs,
   ...
 }: {
   imports = [
@@ -10,6 +10,7 @@
     ./ghostty.nix
     ./kitty.nix
     ./music.nix
+    ./programming.nix
     ./rofi.nix
     ./starship.nix
     ./zellij.nix
@@ -18,48 +19,26 @@
   ];
 
   home.packages = with pkgs; [
-    # popsicle
-    alacritty
     alsa-oss
     anki
-    bacon
     baobab
     bat
-    cargo-generate
-    cargo-info
-    cargo-modules
     chromium
-    clippy
-    cmake
     discord
-    dune_3
-    fastfetch
-    fd
-    fuse
-    gcc
-    git
     gitui
-    gleam
     helix
     htop
+    kdePackages.gwenview
+    kdePackages.kate
     kdePackages.kdenlive
-    lf
-    libtree
-    man
     mpv
     nautilus
-    nodejs
-    ocaml
-    opam
     playerctl
-    python3
     ripgrep
     ripgrep-all
-    rustc
-    rustfmt
-    rustlings
     vdhcoapp
     vesktop
+    yazi
 
     inputs.zen-browser.packages."${system}".default
   ];

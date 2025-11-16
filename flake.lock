@@ -300,22 +300,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-cad7255": {
-      "locked": {
-        "lastModified": 1727528391,
-        "narHash": "sha256-tihajA7P/C7u+Xx4MHRV2G73RztaOAG8AskZuEl8Wg4=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "cad72553776976da6754e035490f032e6dbf7012",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "cad72553776976da6754e035490f032e6dbf7012",
-        "type": "github"
-      }
-    },
     "nur": {
       "inputs": {
         "flake-parts": [
@@ -348,7 +332,6 @@
         "nix-index-database": "nix-index-database",
         "nixcats": "nixcats",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-cad7255": "nixpkgs-cad7255",
         "stylix": "stylix",
         "zen-browser": "zen-browser",
         "zjstatus": "zjstatus"
