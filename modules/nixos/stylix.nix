@@ -9,7 +9,7 @@
 
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml";
 
     cursor = {
       package = pkgs.capitaine-cursors;
@@ -40,7 +40,7 @@
     };
 
     opacity = {
-      terminal = 1.0;
+      terminal = 0.95;
       desktop = 0.9;
     };
 
