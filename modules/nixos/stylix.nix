@@ -25,12 +25,12 @@
 
       sansSerif = {
         package = pkgs.noto-fonts;
-        name = "Noto Serrif";
+        name = "Noto Sans";
       };
 
       monospace = {
-        package = pkgs.annotation-mono;
-        name = "Annotation Mono";
+        package = pkgs.maple-mono.CN;
+        name = "Maple Mono";
       };
 
       emoji = {

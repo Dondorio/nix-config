@@ -15,6 +15,11 @@
     rustfmt
   ];
 
+  lua = with pkgs; [
+    pkgs.lua
+    luarocks
+  ];
+
   ocaml = with pkgs; [
     dune_3
     opam
@@ -43,6 +48,7 @@ in {
     ]
     ++ c
     ++ rust
+    ++ lua
     ++ ocaml
     ++ gleam
     ++ go

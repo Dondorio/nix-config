@@ -6,6 +6,7 @@
   imports = [
     ./art.nix
     ./eza.nix
+    ./fish.nix
     ./games.nix
     ./ghostty.nix
     ./kitty.nix

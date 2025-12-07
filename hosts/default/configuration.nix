@@ -14,7 +14,7 @@
     description = "Donda";
     extraGroups = ["networkmanager" "wheel" "music" "realtime" "docker" "jackaudio" "audio"];
 
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
   };
 
   home-manager = {
@@ -45,10 +45,14 @@
 
   fonts.packages = with pkgs; [
     noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
     noto-fonts-color-emoji
 
     annotation-mono
     iosevka
+    maple-mono.CN
+    maple-mono.opentype
     nerd-fonts._0xproto
     nerd-fonts.fira-code
     nerd-fonts.jetbrains-mono

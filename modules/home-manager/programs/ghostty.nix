@@ -1,7 +1,7 @@
 {
   programs.ghostty = {
     enable = true;
-    enableZshIntegration = true;
+    enableFishIntegration = true;
     settings = {
       font-size = 11;
       cursor-style-blink = false;

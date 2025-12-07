@@ -3,7 +3,7 @@
     enable = true;
 
     shellIntegration = {
-      enableZshIntegration = true;
+      enableFishIntegration = true;
     };
 
     settings = {
