@@ -136,6 +136,10 @@
     allowUnfreePredicate = true;
   };
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-  system.stateVersion = "24.11";
+  nix = {
+    settings.experimental-features = ["nix-command" "flakes"];
+    # package = pkgs.lixPackageSets.stable.lix;
+  };
+
+  system.stateVersion = "25.11";
 }

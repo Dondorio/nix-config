@@ -5,9 +5,9 @@
     nexusmods-app-unfree
     (prismlauncher.override {
       jdks = [
-        zulu8
-        zulu17
         zulu
+        zulu17
+        zulu8
       ];
     })
   ];

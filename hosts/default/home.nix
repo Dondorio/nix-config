@@ -7,7 +7,7 @@
     username = "donda";
     homeDirectory = "/home/donda";
 
-    stateVersion = "24.05";
+    stateVersion = "25.11";
   };
 
   programs = {

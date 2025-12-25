@@ -30,6 +30,8 @@
 
   go = [pkgs.go];
 
+  zig = [pkgs.zig];
+
   elixir = [pkgs.elixir];
 
   js = with pkgs; [
@@ -54,5 +56,6 @@ in {
     ++ go
     ++ elixir
     ++ js
-    ++ python;
+    ++ python
+    ++ zig;
 }

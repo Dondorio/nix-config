@@ -6,6 +6,7 @@
   programs = {
     dconf.enable = true;
     firefox.enable = true;
+    fish.enable = true;
     kdeconnect.enable = true;
     xfconf.enable = true;
     zsh.enable = true;
