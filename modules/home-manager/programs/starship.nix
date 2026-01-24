@@ -40,15 +40,15 @@ in {
         default = "bg:green";
       };
       format = lib.mkOption {
-        default = "[ [$lang_name $symbol( $version) ](fg:white bg:green)]($style)";
+        default = "[ [$lang_name $symbol( $version) ](fg:black bg:green)]($style)";
         description = "The format of the languages with set symbols. You can also use $lang_name";
       };
       symbols = lib.mkOption {
         default = {
           lua = "";
           nodejs = "";
-          c = " ";
-          cpp = " ";
+          c = "";
+          cpp = "";
           rust = "";
           golang = "";
           php = "";
@@ -93,7 +93,7 @@ in {
               $fill
               ${
                 if cfg.separators.enable_r
-                then "[${cfg.separators.slope_l}](fg:cyan)"
+                then "[${cfg.separators.slope_l}](fg:blue)"
                 else ""
               }
               $cmd_duration
@@ -104,7 +104,7 @@ in {
             ''
               ${
                 if cfg.separators.enable_r
-                then "[${cfg.separators.slope_l}](bg:cyan fg:green)"
+                then "[${cfg.separators.slope_l}](bg:blue fg:green)"
                 else ""
               }
               $c
@@ -150,9 +150,9 @@ in {
 
         # Extra
         nix_shell = {
-          style = "bold italic dimmed blue";
+          style = "bold italic blue";
           symbol = "󱄅";
-          format = ''[$symbol shell \[$state\]]($style) [$name](italic dimmed blue)'';
+          format = ''[$symbol shell \[$state\]]($style) [$name](italic blue)'';
           impure_msg = "[impure](bold red)";
           pure_msg = "[pure](bold orange)";
           unknown_msg = "[?](bold white)";
@@ -167,11 +167,11 @@ in {
           disabled = false;
           style =
             if cfg.separators.enable_l
-            then "bg:cyan fg:black"
-            else "cyan";
+            then "bg:blue fg:black"
+            else "blue";
           format = ''[ [ $duration]($style) ]${
               if cfg.separators.enable_l
-              then "(bg:cyan)"
+              then "(bg:blue)"
               else "()"
             }'';
         };

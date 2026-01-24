@@ -4,7 +4,6 @@
   ...
 }: {
   imports = [
-    # ./starship.nix
     ./art.nix
     ./eza.nix
     ./fish.nix
@@ -14,6 +13,7 @@
     ./music.nix
     ./programming.nix
     ./rofi.nix
+    ./starship.nix
     ./zellij.nix
     ./zoxide.nix
     ./zsh.nix
