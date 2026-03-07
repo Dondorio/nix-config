@@ -2,7 +2,6 @@
   home.packages = with pkgs; [
     lunar-client
     lutris
-    nexusmods-app-unfree
     (prismlauncher.override {
       jdks = [
         zulu

@@ -26,6 +26,8 @@
     pkgs.ocaml
   ];
 
+  haskell = [pkgs.ghc];
+
   gleam = [pkgs.gleam];
 
   go = [pkgs.go];
@@ -34,7 +36,7 @@
 
   elixir = [pkgs.elixir];
 
-  js = with pkgs; [
+  javascript = with pkgs; [
     nodejs
     yarn
   ];
@@ -52,10 +54,11 @@ in {
     ++ rust
     ++ lua
     ++ ocaml
+    ++ haskell
     ++ gleam
     ++ go
     ++ elixir
-    ++ js
+    ++ javascript
     ++ python
     ++ zig;
 }

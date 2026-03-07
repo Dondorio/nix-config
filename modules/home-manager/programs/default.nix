@@ -35,6 +35,7 @@
     mpv
     nautilus
     playerctl
+    qbittorrent
     ripgrep
     ripgrep-all
     vdhcoapp
