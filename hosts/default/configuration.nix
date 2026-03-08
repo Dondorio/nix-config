@@ -137,8 +137,10 @@
   };
 
   nix = {
-    settings.experimental-features = ["nix-command" "flakes"];
-    # package = pkgs.lixPackageSets.stable.lix;
+    settings = {
+      experimental-features = ["nix-command" "flakes"];
+      trusted-users = ["root" "donda"];
+    };
   };
 
   system.stateVersion = "25.11";

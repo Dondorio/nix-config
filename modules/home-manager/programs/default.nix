@@ -25,6 +25,7 @@
     baobab
     bat
     chromium
+    devenv
     discord
     gitui
     helix
