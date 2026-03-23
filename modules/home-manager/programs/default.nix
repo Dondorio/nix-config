@@ -25,7 +25,6 @@
     baobab
     bat
     chromium
-    devenv
     discord
     gitui
     helix
@@ -39,7 +38,6 @@
     qbittorrent
     ripgrep
     ripgrep-all
-    vdhcoapp
     vesktop
     yazi
 

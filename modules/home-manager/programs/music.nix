@@ -1,14 +1,13 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
+    muse-sounds-manager
+    musescore
     reaper
-
     yabridge
     yabridgectl
-    musescore
-    muse-sounds-manager
-    #vital
+    # decent-sampler
     #surge
     #surge-XT
-    decent-sampler
+    #vital
   ];
 }

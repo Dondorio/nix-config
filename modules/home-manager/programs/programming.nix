@@ -28,6 +28,12 @@
 
   haskell = [pkgs.ghc];
 
+  java = with pkgs; [
+    gradle
+    jdk21_headless
+    maven
+  ];
+
   gleam = [pkgs.gleam];
 
   go = [pkgs.go];
@@ -45,6 +51,7 @@
 in {
   home.packages = with pkgs;
     [
+      devenv
       gnumake
       libtree
       meson
@@ -55,6 +62,7 @@ in {
     ++ lua
     ++ ocaml
     ++ haskell
+    ++ java
     ++ gleam
     ++ go
     ++ elixir

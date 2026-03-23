@@ -50,6 +50,7 @@
     noto-fonts-color-emoji
 
     annotation-mono
+    cozette
     iosevka
     maple-mono.CN
     maple-mono.opentype
