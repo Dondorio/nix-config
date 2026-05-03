@@ -13,7 +13,7 @@
 
     thunar = {
       enable = true;
-      plugins = with pkgs.xfce; [
+      plugins = with pkgs; [
         thunar-archive-plugin
         thunar-media-tags-plugin
         thunar-vcs-plugin
@@ -37,7 +37,7 @@
         extraPkgs = pkgs:
           with pkgs; [
             icu
-            xorg.libxshmfence
+            libxshmfence
           ];
       };
     };
