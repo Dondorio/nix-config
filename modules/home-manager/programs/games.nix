@@ -1,12 +1,13 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
+    # lutris
     lunar-client
-    lutris
     (prismlauncher.override {
       jdks = [
         zulu
-        zulu17
         zulu8
+        zulu17
+        zulu25
       ];
     })
   ];
