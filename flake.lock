@@ -275,14 +275,18 @@
         ]
       },
       "locked": {
-        "path": "./modules/nixcats",
-        "type": "path"
+        "lastModified": 1779436840,
+        "narHash": "sha256-cBlPP/04iqOcqPxc48WLX0pHOBxSrt5KbXPjChakq7U=",
+        "owner": "Dondorio",
+        "repo": "nixcats-config",
+        "rev": "dc20bb7e4269562381ac31832255087818ab5157",
+        "type": "github"
       },
       "original": {
-        "path": "./modules/nixcats",
-        "type": "path"
-      },
-      "parent": []
+        "owner": "Dondorio",
+        "repo": "nixcats-config",
+        "type": "github"
+      }
     },
     "nixpkgs": {
       "locked": {

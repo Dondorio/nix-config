@@ -46,10 +46,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    self.submodules = true;
-
     nixcats = {
-      url = "./modules/nixcats";
+      url = "github:Dondorio/nixcats-config";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

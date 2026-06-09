@@ -34,7 +34,10 @@
     maven
   ];
 
-  gleam = [pkgs.gleam];
+  gleam = with pkgs; [
+    erlang
+    pkgs.gleam
+  ];
 
   go = [pkgs.go];
 

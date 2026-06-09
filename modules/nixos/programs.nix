@@ -11,6 +11,23 @@
     xfconf.enable = true;
     zsh.enable = true;
 
+    appimage = {
+      enable = true;
+      binfmt = true;
+      package = pkgs.appimage-run.override {
+        extraPkgs = pkgs:
+          with pkgs; [
+            icu
+            libxshmfence
+          ];
+      };
+    };
+
+    localsend = {
+      enable = true;
+      openFirewall = true;
+    };
+
     thunar = {
       enable = true;
       plugins = with pkgs; [
@@ -28,18 +45,6 @@
         extraArgs = "--keep-since 4d --keep 3";
       };
       flake = "/home/donda/nix";
-    };
-
-    appimage = {
-      enable = true;
-      binfmt = true;
-      package = pkgs.appimage-run.override {
-        extraPkgs = pkgs:
-          with pkgs; [
-            icu
-            libxshmfence
-          ];
-      };
     };
 
     ssh.askPassword = lib.mkForce "${pkgs.kdePackages.ksshaskpass.out}/bin/ksshaskpass";

@@ -24,6 +24,7 @@
     anki
     baobab
     bat
+    calibre
     chromium
     discord
     gitui
