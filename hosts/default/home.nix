@@ -39,13 +39,12 @@
       package = pkgs.papirus-icon-theme;
       name = "Papirus-Dark";
     };
-    gtk4.theme = config.gtk.theme;
   };
 
-  xdg.mime.enable = true;
+  xdg.mime.enable = false;
 
   xdg.mimeApps = {
-    enable = true;
+    enable = false;
     defaultApplications = {
       "text/*" = ["kate.desktop"];
 

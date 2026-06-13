@@ -1,11 +1,11 @@
 {
   pkgs,
   inputs,
-  lib,
   ...
 }: {
   imports = [
     ./hardware-configuration.nix
+    ./laptop.nix
     ../../modules/nixos
   ];
 
@@ -68,25 +68,14 @@
     defaultLocale = "en_GB.UTF-8";
 
     extraLocaleSettings = {
-      LC_ADDRESS = "pl_PL.UTF-8";
-      LC_IDENTIFICATION = "pl_PL.UTF-8";
-      LC_MEASUREMENT = "pl_PL.UTF-8";
-      LC_MONETARY = "pl_PL.UTF-8";
-      LC_NAME = "pl_PL.UTF-8";
-      LC_NUMERIC = "pl_PL.UTF-8";
-      LC_PAPER = "pl_PL.UTF-8";
-      LC_TELEPHONE = "pl_PL.UTF-8";
-      LC_TIME = "pl_PL.UTF-8";
+      LC_TIME = "en_GB.UTF-8";
     };
 
-    inputMethod = {
-      enable = true;
-      type = "fcitx5";
-      fcitx5.addons = with pkgs; [
-        fcitx5-mozc
-        fcitx5-gtk
-      ];
-    };
+    supportedLocales = [
+      "en_US.UTF-8/UTF-8"
+      "en_GB.UTF-8/UTF-8"
+      "pl_PL.UTF-8/UTF-8"
+    ];
   };
 
   networking = {
@@ -119,16 +108,15 @@
     enable = true;
     xdgOpenUsePortal = true;
     config = {
-      common.default = ["gtk"];
+      common.default = ["kde"];
     };
   };
 
   boot = {
-    loader.grub = {
-      enable = true;
-      device = "/dev/sda";
-      useOSProber = true;
-      theme = lib.mkForce pkgs.catppuccin-grub;
+    loader = {
+      efi.canTouchEfiVariables = true;
+      systemd-boot.enable = true;
+      timeout = 5;
     };
   };
 
@@ -136,6 +124,20 @@
     allowUnfree = true;
     allowUnfreePredicate = true;
   };
+
+  nixpkgs.overlays = [
+    (final: prev: {
+      inherit
+        (prev.lixPackageSets.stable)
+        nixpkgs-review
+        nix-eval-jobs
+        nix-fast-build
+        colmena
+        ;
+    })
+  ];
+
+  nix.package = pkgs.lixPackageSets.stable.lix;
 
   nix = {
     settings = {

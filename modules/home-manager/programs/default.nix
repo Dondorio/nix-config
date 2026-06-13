@@ -11,6 +11,7 @@
     ./ghostty.nix
     ./kitty.nix
     ./music.nix
+    ./noctalia.nix
     ./programming.nix
     ./rofi.nix
     ./starship.nix

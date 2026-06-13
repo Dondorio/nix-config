@@ -1,11 +1,8 @@
 {...}: {
   services = {
-    pulseaudio.enable = true;
-
     displayManager = {
       sddm = {
         enable = true;
-        # theme = "sugar-dark";
       };
     };
 
@@ -21,7 +18,7 @@
     openssh.enable = true;
 
     pipewire = {
-      enable = false;
+      enable = true;
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
